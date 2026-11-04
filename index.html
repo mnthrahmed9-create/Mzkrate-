@@ -4,580 +4,299 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name="theme-color" content="#7055d9">
-<title>دفتر | DAFTAR</title>
+<title>مذكّراتي | My Diary</title>
 <style>
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{margin:0;background:#f4f2fa;color:#27243a;font-family:Tahoma,Arial,sans-serif}
-button,input,textarea,select{font-family:inherit}
+*{box-sizing:border-box}
+body{
+ margin:0;background:#eeeae3;color:#292820;
+ font-family:Tahoma,Arial,sans-serif;
+}
+button,input,textarea{font:inherit}
 button{cursor:pointer}
-#app{max-width:850px;margin:auto;padding:15px;min-height:100vh}
-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
-.logo{font-size:25px;font-weight:900;color:#7055d9}
-.round{border:0;border-radius:14px;padding:11px;background:white;font-size:20px}
-.hero{background:linear-gradient(135deg,#7055d9,#a98af5);color:white;padding:22px;border-radius:25px}
-.hero h2{margin:0 0 8px}
-.hero p{margin:0;opacity:.9}
-.search{width:100%;padding:15px;border:0;border-radius:15px;margin:16px 0;font-size:16px;outline:none;background:white}
-.tabs{display:flex;gap:8px;overflow:auto;padding-bottom:12px}
-.tab{white-space:nowrap;border:0;border-radius:13px;padding:11px 15px;background:white;color:#7055d9;font-weight:bold}
-.tab.active{background:#7055d9;color:white}
-.notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.note{border-radius:20px;padding:15px;min-height:145px;box-shadow:0 4px 12px #0000000b;overflow-wrap:anywhere}
-.note h3{margin:0 0 9px;font-size:17px}
-.note p{white-space:pre-wrap;line-height:1.7;margin:0;font-size:14px}
-.note small{display:block;margin-top:12px;color:#777}
-.note-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
-.note-actions button{border:0;border-radius:10px;padding:7px 10px;background:#ffffffa8;font-size:14px}
-.fab{position:fixed;bottom:25px;left:22px;width:62px;height:62px;border:0;border-radius:50%;background:#7055d9;color:white;font-size:32px;box-shadow:0 6px 20px #7055d966}
-.modal{display:none;position:fixed;inset:0;background:#0008;z-index:5;align-items:flex-end;justify-content:center}
-.modal.show{display:flex}
-.panel{width:100%;max-width:650px;max-height:94vh;overflow:auto;background:white;border-radius:25px 25px 0 0;padding:20px}
-.panel h2{margin-top:0}
-.field{width:100%;padding:14px;border:1px solid #ddd;border-radius:13px;font-size:16px;margin-bottom:12px;background:#fff;color:#222}
-textarea.field{height:180px;resize:vertical;line-height:1.7}
-.primary{width:100%;border:0;border-radius:14px;padding:15px;background:#7055d9;color:white;font-size:17px;font-weight:bold}
-.secondary{border:0;border-radius:12px;padding:12px;background:#eee;color:#333}
-.row{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
-.row>*{flex:1}
-.colors{display:flex;gap:9px;flex-wrap:wrap;margin:10px 0 16px}
-.color{width:35px;height:35px;border-radius:50%;border:3px solid white;box-shadow:0 0 0 1px #aaa}
-.color.selected{outline:3px solid #7055d9}
-.checkline{display:flex;align-items:center;gap:9px;padding:10px;background:#f4f1ff;border-radius:12px;margin-bottom:8px}
-.checkline input{width:20px;height:20px}
-.checkline.done span{text-decoration:line-through;opacity:.5}
-.taskadd{display:flex;gap:8px}
-.taskadd input{min-width:0;flex:1}
-.empty{text-align:center;padding:45px 10px;color:#999;grid-column:1/-1}
-#toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%);background:#29243a;color:white;padding:12px 20px;border-radius:20px;display:none;z-index:20}
-.dark{background:#171522;color:#fff}
-.dark .search,.dark .round,.dark .tab,.dark .panel{background:#29263a;color:white}
-.dark .field{background:#29263a;color:white;border-color:#555}
-.dark .note{color:#222}
-.dark .secondary{background:#403b52;color:white}
-.dark .checkline{background:#39334c}
-@media(max-width:430px){.notes{grid-template-columns:1fr}.note{min-height:110px}}
+header{
+ background:#fff;padding:17px 18px;
+ display:flex;align-items:center;justify-content:space-between;
+ box-shadow:0 2px 10px #0000000c;
+}
+.logo{font-size:21px;font-weight:bold;color:#69543d}
+.logo small{display:block;font-size:11px;color:#999;margin-top:4px}
+.header-btn{
+ border:0;background:#f1e9dc;border-radius:13px;
+ padding:11px 15px;color:#634b30;font-weight:bold;
+}
+main{max-width:700px;margin:auto;padding:18px}
+.search{
+ width:100%;padding:15px;border:1px solid #e3ddd3;
+ border-radius:14px;background:white;outline:none;
+ margin:5px 0 17px;
+}
+.section-title{font-size:17px;font-weight:bold;margin:12px 0}
+.notes{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.note{
+ min-height:165px;background:#fffdf7;padding:16px;
+ border-radius:5px 16px 5px 16px;
+ box-shadow:0 4px 12px #0000000c;
+ border-right:4px solid #c7a77c;
+ position:relative;overflow:hidden;
+}
+.note:active{transform:scale(.98)}
+.note h3{margin:0 0 10px;font-size:17px}
+.note p{
+ color:#777;font-size:13px;line-height:1.8;
+ overflow:hidden;display:-webkit-box;
+ -webkit-line-clamp:4;-webkit-box-orient:vertical;
+ white-space:pre-wrap;
+}
+.note time{font-size:10px;color:#aaa}
+.star{position:absolute;left:12px;top:12px;color:#c69a37}
+.empty{text-align:center;color:#999;padding:45px 10px;grid-column:1/-1}
+.fab{
+ position:fixed;bottom:25px;left:22px;
+ width:62px;height:62px;border:0;border-radius:50%;
+ background:#70583b;color:white;font-size:34px;
+ box-shadow:0 5px 18px #0003;
+}
+#editor{
+ display:none;position:fixed;inset:0;z-index:10;
+ background:#eeeae3;overflow-y:auto;
+}
+.editor-head{
+ position:sticky;top:0;background:#fff;
+ padding:12px;display:flex;align-items:center;
+ justify-content:space-between;gap:8px;
+ box-shadow:0 2px 8px #0001;z-index:2;
+}
+.editor-head button{
+ border:0;border-radius:11px;background:#f0e9df;
+ padding:10px 13px;color:#59452e;
+}
+.save-status{font-size:11px;color:#888}
+.paper-wrap{max-width:700px;margin:16px auto;padding:0 12px 30px}
+.paper{
+ background:#fffdf7;
+ min-height:calc(100dvh - 105px);
+ padding:25px 22px;
+ box-shadow:0 3px 20px #00000012;
+ position:relative;
+ background-image:linear-gradient(transparent 34px,#e8e3d9 35px);
+ background-size:100% 35px;
+}
+.paper-date{
+ color:#9c8b73;font-size:12px;
+ margin-bottom:20px;
+}
+.paper-title{
+ width:100%;border:0;outline:none;
+ background:transparent;font-size:23px;
+ font-weight:bold;color:#493b2b;
+ margin-bottom:17px;
+ padding:5px 0;
+}
+.paper-body{
+ width:100%;min-height:65vh;
+ border:0;outline:none;resize:none;
+ background:transparent;
+ font-size:17px;line-height:35px;
+ color:#37332d;padding:0;
+}
+.paper-body::placeholder{color:#c5bdb0}
+.editor-tools{
+ display:flex;gap:8px;flex-wrap:wrap;
+ margin-bottom:13px;
+}
+.tool{
+ border:0;background:#eee6d9;
+ border-radius:9px;padding:9px 13px;
+ color:#624c32;
+}
+.delete{color:#a43d35}
+@media(max-width:390px){
+ .notes{grid-template-columns:1fr}
+ .paper{padding:20px 16px}
+}
 </style>
 </head>
 <body>
-<div id="app">
 
 <header>
- <div class="logo">📒 دفتر</div>
- <div class="row" style="margin:0;flex:0">
-  <button class="round" onclick="openSettings()">⚙️</button>
-  <button class="round" onclick="toggleDark()">🌙</button>
+ <div class="logo">📖 مذكّراتي
+  <small>مساحتك الخاصة لأفكارك</small>
  </div>
+ <button class="header-btn" onclick="showFavorites()">⭐ المفضلة</button>
 </header>
 
-<section class="hero">
- <h2>مساحة أفكارك الخاصة ✨</h2>
- <p id="date"></p>
- <p>اكتب، خطط، وتذكر كل شيء في مكان واحد.</p>
-</section>
+<main id="home">
+ <input class="search" id="search"
+ placeholder="🔍 ابحث في مذكراتك..." oninput="render()">
+ <div class="section-title" id="listTitle">كل مذكراتي</div>
+ <div class="notes" id="notes"></div>
+</main>
 
-<input id="search" class="search" placeholder="🔍 ابحث عن ملاحظة..." oninput="render()">
+<button class="fab" onclick="createNote()">+</button>
 
-<div class="tabs">
- <button class="tab active" onclick="setFilter('all',this)">📚 الكل</button>
- <button class="tab" onclick="setFilter('note',this)">📝 ملاحظات</button>
- <button class="tab" onclick="setFilter('task',this)">☑️ مهام</button>
- <button class="tab" onclick="setFilter('fav',this)">❤️ المفضلة</button>
- <button class="tab" onclick="setFilter('trash',this)">🗑️ المحذوفات</button>
-</div>
-
-<div id="notes" class="notes"></div>
-<button class="fab" onclick="newNote()">+</button>
-</div>
-
-<!-- EDITOR -->
-<div class="modal" id="editor">
-<div class="panel">
- <h2 id="editorHeading">ملاحظة جديدة</h2>
-
- <input id="title" class="field" placeholder="عنوان الملاحظة">
-
- <div class="row">
-  <select id="type" class="field" onchange="changeType()">
-   <option value="note">📝 ملاحظة عادية</option>
-   <option value="task">☑️ قائمة مهام</option>
-  </select>
-  <select id="category" class="field">
-   <option value="شخصي">شخصي</option>
-   <option value="عمل">عمل</option>
-   <option value="دراسة">دراسة</option>
-   <option value="أفكار">أفكار</option>
-   <option value="أخرى">أخرى</option>
-  </select>
+<div id="editor">
+ <div class="editor-head">
+  <button onclick="closeEditor()">← رجوع</button>
+  <span class="save-status" id="status">تم الحفظ</span>
+  <button onclick="toggleFavorite()">⭐</button>
+  <button class="delete" onclick="deleteNote()">🗑</button>
  </div>
 
- <textarea id="content" class="field" placeholder="اكتب ملاحظتك هنا..."></textarea>
+ <div class="paper-wrap">
+  <div class="editor-tools">
+   <button class="tool" onclick="insertText('— ')">— فاصل</button>
+   <button class="tool" onclick="insertText('❤️ ')">❤️</button>
+   <button class="tool" onclick="insertText('📌 ')">📌</button>
+  </div>
 
- <div id="taskArea" style="display:none">
-  <h3>قائمة المهام</h3>
-  <div id="taskItems"></div>
-  <div class="taskadd">
-   <input id="taskInput" class="field" placeholder="أضف مهمة">
-   <button class="secondary" onclick="addTask()">+</button>
+  <div class="paper">
+   <div class="paper-date" id="date"></div>
+   <input class="paper-title" id="title"
+   placeholder="اكتب عنوان مذكرتك هنا...">
+   <textarea class="paper-body" id="content"
+   placeholder="ابدأ الكتابة هنا...
+
+هذه ورقتك الخاصة، اكتب كل ما تريد..."></textarea>
   </div>
  </div>
-
- <h3>لون الملاحظة</h3>
- <div class="colors" id="colors"></div>
-
- <div class="row">
-  <button class="secondary" onclick="startVoice()">🎙️ إملاء صوتي</button>
-  <button class="secondary" onclick="shareCurrent()">📤 مشاركة</button>
- </div>
-
- <label>⏰ تذكير (اختياري)</label>
- <input type="datetime-local" id="reminder" class="field">
-
- <button class="primary" onclick="saveNote()">💾 حفظ</button>
- <button class="secondary" style="width:100%;margin-top:9px" onclick="closeEditor()">إغلاق</button>
 </div>
-</div>
-
-<!-- SETTINGS -->
-<div class="modal" id="settings">
-<div class="panel">
- <h2>⚙️ الإعدادات</h2>
- <p>حماية الملاحظات برمز سري</p>
- <input id="pin" class="field" type="password" inputmode="numeric" placeholder="رمز من 4 إلى 8 أرقام">
- <button class="primary" onclick="setPin()">حفظ الرمز</button>
- <button class="secondary" style="width:100%;margin-top:8px" onclick="removePin()">إزالة الرمز</button>
- <hr>
- <button class="secondary" style="width:100%;margin-bottom:8px" onclick="backup()">📥 تصدير نسخة احتياطية</button>
- <button class="secondary" style="width:100%;margin-bottom:8px" onclick="document.getElementById('restoreFile').click()">📤 استعادة نسخة احتياطية</button>
- <input type="file" id="restoreFile" accept=".json" hidden onchange="restoreBackup(event)">
- <button class="secondary" style="width:100%" onclick="closeSettings()">إغلاق</button>
-</div>
-</div>
-
-<!-- LOCK -->
-<div id="lock" style="display:none;position:fixed;inset:0;background:#7055d9;z-index:30;color:white;align-items:center;justify-content:center;text-align:center;padding:20px">
- <div>
-  <h1>🔒 دفتر</h1>
-  <p>أدخل الرمز السري</p>
-  <input id="unlockPin" class="field" type="password" inputmode="numeric" placeholder="الرمز">
-  <button class="primary" onclick="unlock()">فتح التطبيق</button>
- </div>
-</div>
-
-<div id="toast"></div>
 
 <script>
-const $=id=>document.getElementById(id);
-const KEY='daftar_notes_v1';
-let notes=[];
-let editing=null;
-let filter='all';
-let selectedColor='#fff3c4';
-let currentTasks=[];
-let appPin='';
+let notes=JSON.parse(localStorage.getItem("my_diary_notes")||"[]");
+let currentId=null;
+let favoritesOnly=false;
+let timer=null;
 
-const COLORS=['#fff3c4','#d9f4e5','#dceaff','#f8dafa','#ffe0d4','#ffffff','#e9e1ff'];
-
-try{
- notes=JSON.parse(localStorage.getItem(KEY))||[];
- appPin=localStorage.getItem('daftar_pin')||'';
- if(localStorage.getItem('daftar_dark')==='yes')document.body.classList.add('dark');
-}catch(e){notes=[]}
-
-function persist(){
- localStorage.setItem(KEY,JSON.stringify(notes));
+function saveAll(){
+ localStorage.setItem("my_diary_notes",JSON.stringify(notes));
 }
 
-function toast(msg){
- $('toast').textContent=msg;
- $('toast').style.display='block';
- setTimeout(()=>$('toast').style.display='none',2200);
-}
-
-function setFilter(f,btn){
- filter=f;
- document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
- btn.classList.add('active');
- render();
-}
-
-function render(){
- const box=$('notes');
- box.innerHTML='';
- const q=$('search').value.toLowerCase();
-
- let list=notes.filter(n=>{
-  if(filter==='trash'&&!n.deleted)return false;
-  if(filter!=='trash'&&n.deleted)return false;
-  if(filter==='fav'&&!n.fav)return false;
-  if(filter==='note'&&n.type!=='note')return false;
-  if(filter==='task'&&n.type!=='task')return false;
-  return (n.title+' '+n.content+' '+n.category).toLowerCase().includes(q);
- });
-
- list.sort((a,b)=>b.updated-a.updated);
-
- if(!list.length){
-  box.innerHTML='<div class="empty"><div style="font-size:55px">📒</div><h3>لا توجد ملاحظات هنا</h3><p>اضغط على + لإضافة أول ملاحظة</p></div>';
-  return;
- }
-
- list.forEach(n=>{
-  const card=document.createElement('article');
-  card.className='note';
-  card.style.background=n.color||'#fff3c4';
-
-  const h=document.createElement('h3');
-  h.textContent=(n.type==='task'?'☑️ ':'📝 ')+(n.title||'بدون عنوان');
-
-  const p=document.createElement('p');
-  p.textContent=n.content||'';
-
-  card.append(h,p);
-
-  if(n.type==='task'){
-   const progress=document.createElement('small');
-   const done=n.tasks.filter(t=>t.done).length;
-   progress.textContent='إنجاز المهام: '+done+'/'+n.tasks.length;
-   card.append(progress);
-  }
-
-  const meta=document.createElement('small');
-  meta.textContent=(n.category||'عام')+' • '+new Date(n.updated).toLocaleString('ar-IQ');
-  card.append(meta);
-
-  const actions=document.createElement('div');
-  actions.className='note-actions';
-
-  if(n.deleted){
-   actions.append(
-    makeButton('♻️ استعادة',()=>restoreNote(n.id)),
-    makeButton('حذف نهائي',()=>deleteForever(n.id))
-   );
-  }else{
-   actions.append(
-    makeButton('✏️ تعديل',()=>editNote(n.id)),
-    makeButton(n.fav?'❤️':'🤍',()=>favorite(n.id)),
-    makeButton('📤',()=>shareNote(n.id)),
-    makeButton('🗑️',()=>trashNote(n.id))
-   );
-  }
-  card.append(actions);
-  box.append(card);
- });
-}
-
-function makeButton(label,fn){
- const b=document.createElement('button');
- b.textContent=label;
- b.onclick=fn;
- return b;
-}
-
-function drawColors(){
- $('colors').innerHTML='';
- COLORS.forEach(c=>{
-  const b=document.createElement('button');
-  b.className='color'+(selectedColor===c?' selected':'');
-  b.style.background=c;
-  b.onclick=()=>{
-   selectedColor=c;
-   drawColors();
-  };
-  $('colors').append(b);
- });
-}
-
-function newNote(){
- editing=null;
- currentTasks=[];
- $('editorHeading').textContent='ملاحظة جديدة';
- $('title').value='';
- $('content').value='';
- $('type').value='note';
- $('category').value='شخصي';
- $('reminder').value='';
- selectedColor=COLORS[0];
- changeType();
- drawColors();
- $('editor').classList.add('show');
-}
-
-function editNote(id){
- const n=notes.find(x=>x.id===id);
- if(!n)return;
- editing=id;
- $('editorHeading').textContent='تعديل الملاحظة';
- $('title').value=n.title;
- $('content').value=n.content;
- $('type').value=n.type;
- $('category').value=n.category;
- $('reminder').value=n.reminder||'';
- selectedColor=n.color||COLORS[0];
- currentTasks=JSON.parse(JSON.stringify(n.tasks||[]));
- changeType();
- drawColors();
- $('editor').classList.add('show');
-}
-
-function changeType(){
- $('taskArea').style.display=$('type').value==='task'?'block':'none';
- renderTasks();
-}
-
-function renderTasks(){
- const box=$('taskItems');
- box.innerHTML='';
- currentTasks.forEach((t,i)=>{
-  const line=document.createElement('label');
-  line.className='checkline'+(t.done?' done':'');
-  const cb=document.createElement('input');
-  cb.type='checkbox';
-  cb.checked=t.done;
-  cb.onchange=()=>{t.done=cb.checked;renderTasks()};
-  const span=document.createElement('span');
-  span.textContent=t.text;
-  const del=makeButton('✖',()=>{
-   currentTasks.splice(i,1);
-   renderTasks();
-  });
-  line.append(cb,span,del);
-  box.append(line);
- });
-}
-
-function addTask(){
- const v=$('taskInput').value.trim();
- if(!v)return;
- currentTasks.push({text:v,done:false});
- $('taskInput').value='';
- renderTasks();
-}
-
-function saveNote(){
- const title=$('title').value.trim();
- const content=$('content').value.trim();
-
- if(!title&&!content&&!currentTasks.length){
-  toast('اكتب شيئاً أولاً');
-  return;
- }
-
- const old=editing===null?null:notes.find(n=>n.id===editing);
-
- const n={
-  id:editing===null?Date.now():editing,
-  title,
-  content,
-  type:$('type').value,
-  category:$('category').value,
-  color:selectedColor,
-  tasks:currentTasks,
-  fav:old?old.fav:false,
-  deleted:false,
-  created:old?old.created:Date.now(),
-  updated:Date.now(),
-  reminder:$('reminder').value
+function createNote(){
+ const note={
+  id:Date.now(),
+  title:"",
+  content:"",
+  favorite:false,
+  date:new Date().toISOString()
  };
+ notes.unshift(note);
+ currentId=note.id;
+ saveAll();
+ openEditor();
+}
 
- if(old){
-  Object.assign(old,n);
- }else{
-  notes.push(n);
- }
-
- persist();
- closeEditor();
- render();
- scheduleReminder(n);
- toast('تم حفظ الملاحظة 💜');
+function openEditor(){
+ const note=notes.find(n=>n.id===currentId);
+ if(!note)return;
+ document.getElementById("editor").style.display="block";
+ document.getElementById("title").value=note.title;
+ document.getElementById("content").value=note.content;
+ document.getElementById("date").textContent=
+  new Date(note.date).toLocaleString("ar-IQ");
+ document.getElementById("status").textContent="تم الحفظ";
 }
 
 function closeEditor(){
- $('editor').classList.remove('show');
-}
-
-function favorite(id){
- const n=notes.find(x=>x.id===id);
- n.fav=!n.fav;
- persist();
+ saveCurrent();
+ document.getElementById("editor").style.display="none";
  render();
 }
 
-function trashNote(id){
- if(!confirm('نقل الملاحظة إلى المحذوفات؟'))return;
- const n=notes.find(x=>x.id===id);
- n.deleted=true;
- persist();
- render();
+function saveCurrent(){
+ if(currentId===null)return;
+ const note=notes.find(n=>n.id===currentId);
+ if(!note)return;
+
+ note.title=document.getElementById("title").value;
+ note.content=document.getElementById("content").value;
+ note.updated=new Date().toISOString();
+ saveAll();
+ document.getElementById("status").textContent="✓ تم الحفظ";
 }
 
-function restoreNote(id){
- const n=notes.find(x=>x.id===id);
- n.deleted=false;
- persist();
- render();
- toast('تمت الاستعادة');
+function autoSave(){
+ document.getElementById("status").textContent="جارٍ الحفظ...";
+ clearTimeout(timer);
+ timer=setTimeout(saveCurrent,250);
 }
 
-function deleteForever(id){
- if(!confirm('حذف نهائي؟ لا يمكن التراجع'))return;
- notes=notes.filter(x=>x.id!==id);
- persist();
- render();
-}
+document.getElementById("title").addEventListener("input",autoSave);
+document.getElementById("content").addEventListener("input",autoSave);
 
-function shareNote(id){
- const n=notes.find(x=>x.id===id);
- const text=n.title+'\n\n'+n.content;
- if(navigator.share){
-  navigator.share({title:n.title,text}).catch(()=>{});
- }else{
-  navigator.clipboard.writeText(text).then(()=>toast('تم نسخ الملاحظة'));
- }
-}
+function render(){
+ const q=document.getElementById("search").value.toLowerCase();
+ const list=document.getElementById("notes");
+ list.innerHTML="";
+ let filtered=notes.filter(n=>
+  (!favoritesOnly||n.favorite)&&
+  ((n.title+" "+n.content).toLowerCase().includes(q))
+ );
 
-function shareCurrent(){
- const text=$('title').value+'\n\n'+$('content').value;
- if(navigator.share)navigator.share({title:$('title').value,text}).catch(()=>{});
- else if(navigator.clipboard)navigator.clipboard.writeText(text).then(()=>toast('تم النسخ'));
- else toast('المشاركة غير مدعومة');
-}
+ document.getElementById("listTitle").textContent=
+ favoritesOnly?"⭐ مذكراتي المفضلة":"كل مذكراتي";
 
-function startVoice(){
- const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
- if(!SR){toast('الإملاء الصوتي غير مدعوم في هذا المتصفح');return}
- const rec=new SR();
- rec.lang='ar-IQ';
- rec.interimResults=false;
- rec.onresult=e=>{
-  $('content').value+=' '+e.results[0][0].transcript;
-  toast('تم تحويل الصوت إلى كتابة');
- };
- rec.onerror=()=>toast('تعذر تسجيل الصوت');
- rec.start();
-}
-
-function scheduleReminder(n){
- if(!n.reminder)return;
- const delay=new Date(n.reminder).getTime()-Date.now();
- if(delay<=0)return;
- if(delay>2147480000){
-  toast('التذكير بعيد جداً');
+ if(!filtered.length){
+  list.innerHTML='<div class="empty">📖<br><br>لا توجد مذكرات هنا بعد.<br>اضغط + لكتابة أول مذكرة.</div>';
   return;
  }
- setTimeout(()=>{
-  if(!notes.some(x=>x.id===n.id&&!x.deleted))return;
-  if('Notification'in window&&Notification.permission==='granted'){
-   new Notification(n.title||'تذكير من دفتر',{body:n.content||'لديك تذكير جديد'});
-  }else{
-   alert('⏰ تذكير: '+(n.title||n.content));
+
+ filtered.forEach(n=>{
+  const card=document.createElement("div");
+  card.className="note";
+  const h=document.createElement("h3");
+  h.textContent=n.title||"مذكرة جديدة";
+  const p=document.createElement("p");
+  p.textContent=n.content||"ابدأ بكتابة أفكارك...";
+  const time=document.createElement("time");
+  time.textContent=new Date(n.updated||n.date).toLocaleDateString("ar-IQ");
+  card.append(h,p,time);
+  if(n.favorite){
+   const star=document.createElement("span");
+   star.className="star";
+   star.textContent="★";
+   card.append(star);
   }
- },delay);
+  card.onclick=()=>{
+   currentId=n.id;
+   openEditor();
+  };
+  list.append(card);
+ });
 }
 
-async function requestNotifications(){
- if(!('Notification'in window)){
-  toast('الإشعارات غير مدعومة');
-  return;
- }
- const result=await Notification.requestPermission();
- toast(result==='granted'?'تم تفعيل الإشعارات':'لم يتم السماح بالإشعارات');
+function toggleFavorite(){
+ const note=notes.find(n=>n.id===currentId);
+ if(!note)return;
+ note.favorite=!note.favorite;
+ saveAll();
+ document.getElementById("status").textContent=
+ note.favorite?"⭐ أضيفت للمفضلة":"أزيلت من المفضلة";
 }
 
-function openSettings(){
- $('settings').classList.add('show');
+function showFavorites(){
+ favoritesOnly=!favoritesOnly;
+ render();
 }
 
-function closeSettings(){
- $('settings').classList.remove('show');
+function deleteNote(){
+ if(!confirm("هل تريد حذف هذه المذكرة نهائياً؟"))return;
+ notes=notes.filter(n=>n.id!==currentId);
+ currentId=null;
+ saveAll();
+ document.getElementById("editor").style.display="none";
+ render();
 }
 
-function setPin(){
- const p=$('pin').value;
- if(!/^\d{4,8}$/.test(p)){
-  toast('الرمز يجب أن يكون من 4 إلى 8 أرقام');
-  return;
- }
- localStorage.setItem('daftar_pin',p);
- appPin=p;
- $('pin').value='';
- toast('تم حفظ الرمز');
- closeSettings();
+function insertText(value){
+ const input=document.getElementById("content");
+ const start=input.selectionStart;
+ const end=input.selectionEnd;
+ input.setRangeText(value,start,end,"end");
+ input.focus();
+ autoSave();
 }
-
-function removePin(){
- if(!appPin)return toast('لا يوجد رمز');
- const old=prompt('أدخل الرمز الحالي');
- if(old!==appPin)return toast('الرمز غير صحيح');
- localStorage.removeItem('daftar_pin');
- appPin='';
- toast('تم إلغاء القفل');
-}
-
-function unlock(){
- if($('unlockPin').value===appPin){
-  $('lock').style.display='none';
-  $('unlockPin').value='';
- }else{
-  toast('الرمز غير صحيح');
- }
-}
-
-function backup(){
- const blob=new Blob([JSON.stringify(notes,null,2)],{type:'application/json'});
- const url=URL.createObjectURL(blob);
- const a=document.createElement('a');
- a.href=url;
- a.download='daftar-backup.json';
- a.click();
- URL.revokeObjectURL(url);
- toast('تم إنشاء النسخة الاحتياطية');
-}
-
-function restoreBackup(e){
- const file=e.target.files[0];
- if(!file)return;
- const reader=new FileReader();
- reader.onload=()=>{
-  try{
-   const data=JSON.parse(reader.result);
-   if(!Array.isArray(data))throw Error();
-   if(!confirm('استبدال الملاحظات الحالية بالنسخة الاحتياطية؟'))return;
-   notes=data;
-   persist();
-   render();
-   closeSettings();
-   toast('تمت استعادة الملاحظات');
-  }catch(err){
-   toast('الملف غير صالح');
-  }
- };
- reader.readAsText(file);
- e.target.value='';
-}
-
-function toggleDark(){
- document.body.classList.toggle('dark');
- localStorage.setItem('daftar_dark',document.body.classList.contains('dark')?'yes':'no');
-}
-
-$('date').textContent=new Date().toLocaleDateString('ar-IQ',{
- weekday:'long',year:'numeric',month:'long',day:'numeric'
-});
 
 render();
-
-if(appPin){
- $('lock').style.display='flex';
-}
-
-// اطلب الإذن عند اختيار المستخدم للتذكير
-$('reminder').addEventListener('change',()=>{
- if('Notification'in window&&Notification.permission==='default'){
-  requestNotifications();
- }
-});
 </script>
 </body>
 </html>
